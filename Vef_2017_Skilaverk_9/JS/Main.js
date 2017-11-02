@@ -1,43 +1,36 @@
 (function() {
-  const myQuestions = [
+ var myQuestions = [
     {
       question: "Who is the strongest?",
       answers: {
-        a: "Superman",
-        b: "The Terminator",
-        c: "Waluigi, obviously"
-      },
-      correctAnswer: "c"
-    },
-    {
-      question: "What is the best site ever created?",
-      answers: {
-        a: "SitePoint",
-        b: "Simple Steps Code",
-        c: "Trick question; they're both the best"
-      },
-      correctAnswer: "c"
-    },
-    {
-      question: "Where is Waldo really?",
-      answers: {
-        a: "Antarctica",
-        b: "Exploring the Pacific Ocean",
-        c: "Sitting in a tree",
-        d: "Minding his own business, so stop asking"
+        a: "Goku",
+        b: "Vegeta",
+        c: "Majin Buu",
+        d: "Hercule, the world's savior"
       },
       correctAnswer: "d"
+    },
+    {
+      question: "Is DBZ a good show?",
+      answers: {
+        a: "Yes",
+        b: "No"
+      },
+      correctAnswer: "a"
     }
-  ];
+    ];
 
   function buildQuiz() {
+  	$( document ).ready(function() {
+        console.log( "document loaded" );
+    });
     // we'll need a place to store the HTML output
-    const output = [];
+    var  output = [];
 
     // for each question...
     myQuestions.forEach((currentQuestion, questionNumber) => {
       // we'll want to store the list of answer choices
-      const answers = [];
+      var answers = [];
 
       // and for each available answer...
       for (letter in currentQuestion.answers) {
@@ -66,7 +59,7 @@
 
   function showResults() {
     // gather answer containers from our quiz
-    const answerContainers = quizContainer.querySelectorAll(".answers");
+    var answerContainers = quizContainer.querySelectorAll(".answers");
 
     // keep track of user's answers
     let numCorrect = 0;
@@ -74,9 +67,9 @@
     // for each question...
     myQuestions.forEach((currentQuestion, questionNumber) => {
       // find selected answer
-      const answerContainer = answerContainers[questionNumber];
-      const selector = `input[name=question${questionNumber}]:checked`;
-      const userAnswer = (answerContainer.querySelector(selector) || {}).value;
+      var answerContainer = answerContainers[questionNumber];
+      var selector = `input[name=question${questionNumber}]:checked`;
+      var userAnswer = (answerContainer.querySelector(selector) || {}).value;
 
       // if answer is correct
       if (userAnswer === currentQuestion.correctAnswer) {
@@ -124,16 +117,16 @@
     showSlide(currentSlide - 1);
   }
 
-  const quizContainer = document.getElementById("quiz");
-  const resultsContainer = document.getElementById("results");
-  const submitButton = document.getElementById("submit");
+  var quizContainer = document.getElementById("quiz");
+  var resultsContainer = document.getElementById("results");
+  var submitButton = document.getElementById("submit");
 
   // display quiz right away
   buildQuiz();
 
-  const previousButton = document.getElementById("previous");
-  const nextButton = document.getElementById("next");
-  const slides = document.querySelectorAll(".slide");
+  var previousButton = document.getElementById("previous");
+  var nextButton = document.getElementById("next");
+  var slides = document.querySelectorAll(".slide");
   let currentSlide = 0;
 
   showSlide(0);
